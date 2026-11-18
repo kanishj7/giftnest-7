@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiftNest - Gifting Gallery</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fdfbf7;
+            color: #231f20;
+        }
+
+        header {
+            background: #963728;
+            color: white;
+            padding: 22px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #f4a261;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        nav a:hover {
+            color: #f4a261;
+        }
+
+        .welcome {
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+        .welcome h2 {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .welcome p {
+            color: #665e5a;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px 7%;
+        }
+
+        .gift {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px #00000012;
+            text-align: center;
+            padding-bottom: 15px;
+        }
+
+        .gift-art {
+            width: 100%;
+            height: 230px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px;
+            border-bottom: 1px dashed rgba(35, 31, 32, 0.14);
+        }
+
+        .gift-art .emoji {
+            font-size: 54px;
+            line-height: 1;
+        }
+
+        .gift-art .art-label {
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: #5c3a21;
+        }
+
+        .gift h3 {
+            margin-top: 12px;
+        }
+
+        .gift p {
+            color: #665e5a;
+            margin-top: 6px;
+            font-size: 14px;
+        }
+
+        .featured {
+            grid-column: span 2;
+            background: #f6efe6;
+        }
+
+        .featured .gift-art {
+            height: 280px;
+        }
+
+        .featured .gift-art .emoji {
+            font-size: 68px;
+        }
+
+        footer {
+            background: #963728;
+            color: white;
+            text-align: center;
+            padding: 22px;
+            margin-top: 35px;
+        }
+
+        @media (max-width: 800px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 13px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .featured {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>GiftNest.</h1>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#gallery">Hampers</a>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+
+    <section class="welcome" id="home">
+        <h2>Gifts Worth Cherishing.</h2>
+        <p>Discover your next favourite festive hamper at GiftNest.</p>
+    </section>
+
+    <section class="gallery" id="gallery">
+
+        <div class="gift featured">
+            <div class="gift-art" data-label="Brass & Saffron" data-emoji="🪔" data-bg="#fbe6d4"></div>
+            <h3>Royal Utsav Hamper</h3>
+            <p>Featured Collection • ₹2,499</p>
+        </div>
+
+        <div class="gift">
+            <div class="gift-art" data-label="Estate Loose-Leaf" data-emoji="🫖" data-bg="#e3efe6"></div>
+            <h3>Assam Chai Trunk</h3>
+            <p>Gourmet Tea • ₹1,499</p>
+        </div>
+
+        <div class="gift">
+            <div class="gift-art" data-label="Pure Ayurveda" data-emoji="🌸" data-bg="#fce8ec"></div>
+            <h3>Rose & Oud Spa</h3>
+            <p>Ayurvedic Wellness • ₹1,850</p>
+        </div>
+
+        <div class="gift">
+            <div class="gift-art" data-label="Pure Bell-Metal" data-emoji="🏺" data-bg="#f7edd8"></div>
+            <h3>Kansa Thali Set</h3>
+            <p>Brass & Home • ₹3,299</p>
+        </div>
+
+        <div class="gift">
+            <div class="gift-art" data-label="Custom Engraved" data-emoji="🧳" data-bg="#efe5dc"></div>
+            <h3>Travel Gift Duo</h3>
+            <p>Personalized • ₹1,299</p>
+        </div>
+
+    </section>
+
+    <section class="welcome" id="about">
+        <h2>About GiftNest</h2>
+        <p>A curated gifting boutique connecting Indian artisans with thoughtful celebrations.</p>
+    </section>
+
+    <footer>
+        <p>GiftNest | Curate. Wrap. Celebrate.</p>
+        <p>© 2026 All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.gift-art').forEach((card) => {
+            card.style.background = card.dataset.bg || '#f6efe6';
+            card.innerHTML = `<span class="emoji">${card.dataset.emoji || '🎁'}</span><span class="art-label">${card.dataset.label || ''}</span>`;
+        });
+    </script>
+
+</body>
+</html>
